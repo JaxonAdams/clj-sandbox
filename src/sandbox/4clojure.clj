@@ -53,3 +53,15 @@
 (comment
   (rotate-seq 2 [1 2 3 4 5])
   (rotate-seq -2 [1 2 3 4 5]))
+
+;; PROBLEM 45 -- INTRO TO ITERATE
+(comment
+  (take 5 (iterate #(+ 3 %) 1)))
+
+;; PROBLEM 46 -- FLIPPING OUT
+(defn flip-args [f]
+  (fn [& args] (->> args reverse (apply f))))
+
+(comment
+  ((flip-args nth) 2 [1 2 3 4 5])
+  ((flip-args take) [1 2 3 4 5] 3))
