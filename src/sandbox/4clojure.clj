@@ -36,3 +36,20 @@
 (comment
   (reverse-interleave [1 2 3 4 5 6] 2)
   (reverse-interleave (range 9) 3))
+
+;; PROBLEM 44 -- ROTATE SEQUENCE
+(defn rotate-seq [n col]
+  (loop [idx 0
+         current-col col]
+    (cond
+      (= idx n) current-col
+      (< idx n) (recur
+                 (inc idx)
+                 (conj (vec (rest current-col)) (first current-col)))
+      :else (recur
+             (dec idx)
+             (cons (last current-col) (vec (butlast current-col)))))))
+
+(comment
+  (rotate-seq 2 [1 2 3 4 5])
+  (rotate-seq -2 [1 2 3 4 5]))
