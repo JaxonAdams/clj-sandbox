@@ -65,3 +65,8 @@
 (comment
   ((flip-args nth) 2 [1 2 3 4 5])
   ((flip-args take) [1 2 3 4 5] 3))
+
+;; PROBLEM 48 -- INTRO TO SOME
+(comment
+  (some #{2 7 6} [5 6 7 8])
+  (some #(when (even? %) %) [5 6 7 8]))
