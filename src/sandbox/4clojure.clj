@@ -70,3 +70,14 @@
 (comment
   (some #{2 7 6} [5 6 7 8])
   (some #(when (even? %) %) [5 6 7 8]))
+
+;; PROBLEM 50 -- SPLIT BY TYPE
+(defn split-by-type [col]
+  (->> col
+       (group-by type)
+       (map last)
+       (into #{})))
+
+(comment
+  (split-by-type [1 :a 2 :b 3 :c])
+  (split-by-type [[1 2] :a [3 4] 5 6 :b]))
