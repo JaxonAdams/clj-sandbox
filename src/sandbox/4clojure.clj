@@ -21,3 +21,18 @@
   (factorial 8))
 
 ;; PROBLEM 43 -- REVERSE INTERLEAVE
+(defn reverse-interleave [col n]
+  (let [groups (repeat n [])]
+    (loop [to-process col
+           current-groups (vec groups)
+           idx 0]
+      (if (seq to-process)
+        (recur
+         (rest to-process)
+         (update current-groups (mod idx n) conj (first to-process))
+         (inc idx))
+        current-groups))))
+
+(comment
+  (reverse-interleave [1 2 3 4 5 6] 2)
+  (reverse-interleave (range 9) 3))
